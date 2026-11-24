@@ -25,12 +25,6 @@ Colección de temas de iconos personalizados para KDE Plasma que combinan los **
 | **BrisaWhiteSur** | WhiteSur-icon-theme | Breeze Dark | https://github.com/vinceliuice/WhiteSur-icon-theme |
 | **Brisafiro** | Zafiro-icons | Breeze Dark | https://github.com/zayronxio/Zafiro-icons |
 
-### Repositorios evaluados y descartados
-- `materia-kde`: no es un tema de iconos (es un tema de Plasma/Kvantum/Aurorae).
-- `infinity-icon-theme`: cobertura muy limitada de iconos de aplicaciones.
-- `Win10Sur-icon-theme`: menor cobertura de aplicaciones y carpetas frente a otras variantes similares.
-- `Inverse-icon-theme`: menor cobertura de iconos de aplicaciones frente a `Reversal`, `Tela` o `WhiteSur`.
-
 ## Actualización automática
 
 El script `update_icons.py` verifica si hay nuevos commits en cada repositorio de origen (comparando contra `.theme_sources.json`), descarga únicamente los que tengan cambios, actualiza o agrega los iconos nuevos de carpetas y aplicaciones manteniendo los iconos monocromáticos de Breeze, y regenera la caché con `gtk-update-icon-cache`.
