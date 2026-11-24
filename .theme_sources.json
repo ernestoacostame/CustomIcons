@@ -64,14 +64,14 @@
     "sha": "73d8040da51a9ed74e47c7366e7e9ff437601a5c",
     "branch": "master"
   },
-  "Zafiro-icons": {
-    "url": "https://github.com/zayronxio/Zafiro-icons",
-    "sha": "5c7f38ca3b01194104481ffb803111e31851cf5d",
-    "branch": "master"
-  },
   "papirus-icon-theme": {
     "url": "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme",
     "sha": "626182cfe885b7eb2dbb7bcae5cde6d8d1048f2f",
+    "branch": "master"
+  },
+  "Zafiro-icons": {
+    "url": "https://github.com/zayronxio/Zafiro-icons",
+    "sha": "5c7f38ca3b01194104481ffb803111e31851cf5d",
     "branch": "master"
   },
   "ocean-design": {

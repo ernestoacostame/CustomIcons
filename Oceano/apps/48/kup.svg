@@ -1,1 +1,30 @@
-../../preferences/32/preferences-system-backup.svg
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+  <defs>
+    
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h32v32H0z"/>
+    </clipPath>
+  <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text { color: #232629; }
+    </style>
+  </defs>
+  <g clip-path="url(#a)">
+    <mask id="b" width="32" height="32" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+      <path fill="#fff" d="M32 0H0v32h32z"/>
+    </mask>
+    <g mask="url(#b)">
+      <mask id="c" width="32" height="32" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" d="M32 0H0v32h32z"/>
+      </mask>
+      <g mask="url(#c)">
+        <mask id="d" width="32" height="32" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+          <path fill="#fff" d="M32 0H0v32h32z"/>
+        </mask>
+        <g mask="url(#d)">
+          <path d="M16.001 3c7.18 0 13 5.82 13 13s-5.82 13-13 13C9.813 29 4.636 24.677 3.322 18.888l.976-.221.975-.222C6.385 23.344 10.767 27 16.001 27c6.075 0 11-4.925 11-11s-4.925-11-11-11a10.987 10.987 0 0 0-8.994 4.667h.99a1 1 0 0 1 0 2l-2.73-.001a.87.87 0 0 1-.036 0H4.004c-.555 0-1.006-.45-1.007-1.006V6.667a1 1 0 0 1 2 0v2.406A12.993 12.993 0 0 1 16.001 3M4.076 17.691a1.001 1.001 0 0 1 1.197.754l-1.95.443a1 1 0 0 1 .753-1.197M16 7a1 1 0 0 1 1 1v7h7l.102.005a1 1 0 0 1 0 1.99L24 17h-8a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1" style="fill:currentColor" class="ColorScheme-Text"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  
+</svg>

@@ -1,1 +1,36 @@
-../../devices/64/input-mouse.svg
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64">
+  <defs>
+    
+    <linearGradient id="b" x1="32" x2="32" y1="57" y2="7" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A18CD1"/>
+      <stop offset="1" stop-color="#FBC2EB"/>
+    </linearGradient>
+    <linearGradient id="c" x1="30.004" x2="30.004" y1="-4.252" y2="48.946" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF0FF"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <filter id="a" width="56" height="56" x="4" y="6" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feMorphology in="SourceAlpha" radius="1" result="effect1_dropShadow_4465_85653"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feColorMatrix values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.08 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4465_85653"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy=".5"/>
+      <feGaussianBlur stdDeviation=".5"/>
+      <feColorMatrix values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.1 0"/>
+      <feBlend in2="effect1_dropShadow_4465_85653" result="effect2_dropShadow_4465_85653"/>
+      <feBlend in="SourceGraphic" in2="effect2_dropShadow_4465_85653" result="shape"/>
+    </filter>
+  <style type="text/css" id="current-color-scheme">
+
+    </style>
+  </defs>
+  <g filter="url(#a)">
+    <rect width="50" height="50" x="7" y="7" fill="url(#b)" rx="6"/>
+  </g>
+  <path fill="url(#c)" d="M32 12c3.72 0 5.58 0 7.105.41a12 12 0 0 1 8.486 8.485C48 22.42 48 24.28 48 28v8c0 3.72 0 5.58-.41 7.105a12 12 0 0 1-8.485 8.486C37.58 52 35.72 52 32 52c-3.487 0-5.34 0-6.815-.337l-.29-.072a12 12 0 0 1-8.375-8.1l-.11-.386c-.307-1.144-.384-2.476-.403-4.64L16 36v-8c0-3.487 0-5.34.337-6.815l.072-.29a12 12 0 0 1 8.1-8.375l.386-.11C26.42 12 28.28 12 32 12m2 8c0 .113-.012.224-.03.332A6.002 6.002 0 0 1 38 26v4a6 6 0 0 1-12 0v-4a6.002 6.002 0 0 1 4.03-5.668A2.007 2.007 0 0 1 30 20v-3.993c-2.427.015-3.352.073-4.07.265a8 8 0 0 0-5.657 5.658C20.034 22.819 20 24.023 20 28v8c0 3.977.034 5.181.273 6.07a8 8 0 0 0 5.657 5.657c.889.239 2.093.273 6.07.273 3.977 0 5.181-.034 6.07-.273a8 8 0 0 0 5.657-5.657c.239-.889.273-2.093.273-6.07v-8c0-3.977-.034-5.181-.273-6.07a8 8 0 0 0-5.657-5.657c-.718-.193-1.643-.25-4.07-.266zm-2 4a2 2 0 0 0-2 2v4a2 2 0 1 0 4 0v-4a2 2 0 0 0-2-2"/>
+  
+</svg>

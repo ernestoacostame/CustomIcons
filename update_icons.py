@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
 """
-Update and build Breeze-merged custom icon themes from upstream repositories.
-Keeps Breeze/Breeze-Dark monochrome icons and merges color apps & places icons
-from each upstream theme.
+Interactive & CLI manager for Breeze-merged custom icon themes.
+- Checks and applies upstream updates for all tracked themes.
+- Lets the user add new icon themes from GitHub / GitLab URLs interactively.
 """
 
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import tempfile
-import urllib.parse
 import urllib.request
-import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -23,163 +22,84 @@ BREEZE_LIGHT = Path("/usr/share/icons/breeze")
 BREEZE_DARK = Path("/usr/share/icons/breeze-dark")
 
 BREEZE_COLOR_DIRS = [
+    "apps/16", "apps/16@2x", "apps/16@3x",
+    "apps/22", "apps/22@2x", "apps/22@3x",
+    "apps/24", "apps/24@2x", "apps/24@3x",
     "apps/32", "apps/48", "apps/64",
     "places/32", "places/48", "places/64", "places/96",
 ]
 
-# Mapping of upstream repo -> target theme config(s)
-THEMES = [
-    {
-        "repo": "BigSur-icon-theme",
-        "url": "https://github.com/yeyushengfan258/BigSur-icon-theme",
-        "theme_name": "BrisaSur",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Colloid-icon-theme",
-        "url": "https://github.com/vinceliuice/Colloid-icon-theme",
-        "theme_name": "Brisolloid",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Diagonal-icon-theme",
-        "url": "https://github.com/tamascsabi/Diagonal-icon-theme",
-        "theme_name": "Brisagonal",
-        "layout": "diagonal",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Flatery",
-        "url": "https://github.com/cbrnix/Flatery",
-        "theme_name": "Brisatery",
-        "layout": "flatery",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Fluent-icon-theme",
-        "url": "https://github.com/vinceliuice/Fluent-icon-theme",
-        "theme_name": "Brisuent",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Hatter",
-        "url": "https://github.com/Mibea/Hatter",
-        "theme_name": "Brisatter",
-        "layout": "hatter",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "McMojave-circle",
-        "url": "https://github.com/vinceliuice/McMojave-circle",
-        "theme_name": "Brisajave",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Mkos-Big-Sur",
-        "url": "https://github.com/zayronxio/Mkos-Big-Sur",
-        "theme_name": "Brisakos",
-        "layout": "mkos",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Reversal-icon-theme",
-        "url": "https://github.com/yeyushengfan258/Reversal-icon-theme",
-        "theme_name": "Brisersal",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Tela-icon-theme",
-        "url": "https://github.com/vinceliuice/Tela-icon-theme",
-        "theme_name": "Brisela",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Tela-circle-icon-theme",
-        "url": "https://github.com/vinceliuice/Tela-circle-icon-theme",
-        "theme_name": "Brisela-Circle",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "We10X-icon-theme",
-        "url": "https://github.com/yeyushengfan258/We10X-icon-theme",
-        "theme_name": "Brisa10X",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "WhiteSur-icon-theme",
-        "url": "https://github.com/vinceliuice/WhiteSur-icon-theme",
-        "theme_name": "BrisaWhiteSur",
-        "layout": "src_links",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "Zafiro-icons",
-        "url": "https://github.com/zayronxio/Zafiro-icons",
-        "theme_name": "Brisafiro",
-        "layout": "zafiro",
-        "breeze_base": "dark",
-    },
-    {
-        "repo": "papirus-icon-theme",
-        "url": "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme",
-        "theme_name": "Brisus",
-        "layout": "papirus",
-        "breeze_base": "light",
-    },
-    {
-        "repo": "ocean-design",
-        "url": "https://invent.kde.org/abetts/ocean-design",
-        "theme_name": "Oceano",
-        "layout": "ocean",
-        "breeze_base": "dark",
-    },
+BUILTIN_THEMES = [
+    {"repo": "BigSur-icon-theme", "url": "https://github.com/yeyushengfan258/BigSur-icon-theme", "theme_name": "BrisaSur", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Colloid-icon-theme", "url": "https://github.com/vinceliuice/Colloid-icon-theme", "theme_name": "Brisolloid", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Diagonal-icon-theme", "url": "https://github.com/tamascsabi/Diagonal-icon-theme", "theme_name": "Brisagonal", "layout": "diagonal", "breeze_base": "dark"},
+    {"repo": "Flatery", "url": "https://github.com/cbrnix/Flatery", "theme_name": "Brisatery", "layout": "flatery", "breeze_base": "dark"},
+    {"repo": "Fluent-icon-theme", "url": "https://github.com/vinceliuice/Fluent-icon-theme", "theme_name": "Brisuent", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Hatter", "url": "https://github.com/Mibea/Hatter", "theme_name": "Brisatter", "layout": "hatter", "breeze_base": "dark"},
+    {"repo": "McMojave-circle", "url": "https://github.com/vinceliuice/McMojave-circle", "theme_name": "Brisajave", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Mkos-Big-Sur", "url": "https://github.com/zayronxio/Mkos-Big-Sur", "theme_name": "Brisakos", "layout": "mkos", "breeze_base": "dark"},
+    {"repo": "Reversal-icon-theme", "url": "https://github.com/yeyushengfan258/Reversal-icon-theme", "theme_name": "Brisersal", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Tela-icon-theme", "url": "https://github.com/vinceliuice/Tela-icon-theme", "theme_name": "Brisela", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Tela-circle-icon-theme", "url": "https://github.com/vinceliuice/Tela-circle-icon-theme", "theme_name": "Brisela-Circle", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "We10X-icon-theme", "url": "https://github.com/yeyushengfan258/We10X-icon-theme", "theme_name": "Brisa10X", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "WhiteSur-icon-theme", "url": "https://github.com/vinceliuice/WhiteSur-icon-theme", "theme_name": "BrisaWhiteSur", "layout": "src_links", "breeze_base": "dark"},
+    {"repo": "Zafiro-icons", "url": "https://github.com/zayronxio/Zafiro-icons", "theme_name": "Brisafiro", "layout": "zafiro", "breeze_base": "dark"},
+    {"repo": "papirus-icon-theme", "url": "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme", "theme_name": "Brisus", "layout": "papirus", "breeze_base": "light"},
+    {"repo": "ocean-design", "url": "https://invent.kde.org/abetts/ocean-design", "theme_name": "Oceano", "layout": "ocean", "breeze_base": "dark"},
 ]
 
 
+def load_state() -> dict:
+    return json.loads(STATE_FILE.read_text(encoding="utf-8")) if STATE_FILE.exists() else {}
+
+
+def save_state(state: dict):
+    STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def get_all_themes(state: dict) -> list:
+    themes = list(BUILTIN_THEMES)
+    known_repos = {t["repo"] for t in themes}
+    for repo, info in state.items():
+        if repo not in known_repos and info.get("custom"):
+            themes.append({
+                "repo": repo,
+                "url": info["url"],
+                "theme_name": info["theme_name"],
+                "layout": info.get("layout", "auto"),
+                "breeze_base": info.get("breeze_base", "dark"),
+                "subpath": info.get("subpath", ""),
+            })
+    return themes
+
+
 def get_remote_head(url: str):
-    if "github.com/" in url:
-        owner, repo = url.rstrip("/").split("github.com/")[1].split("/")[:2]
-        req = urllib.request.Request(
-            f"https://api.github.com/repos/{owner}/{repo}",
-            headers={"User-Agent": "CustomIcons-Updater"},
-        )
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            branch = json.loads(resp.read().decode()).get("default_branch", "main")
-        req2 = urllib.request.Request(
-            f"https://api.github.com/repos/{owner}/{repo}/commits/{branch}",
-            headers={"User-Agent": "CustomIcons-Updater"},
-        )
-        with urllib.request.urlopen(req2, timeout=20) as resp:
-            sha = json.loads(resp.read().decode()).get("sha", "")
+    clean_url = url.rstrip("/")
+    if clean_url.endswith(".git"):
+        clean_url = clean_url[:-4]
+    res = subprocess.run(
+        ["git", "ls-remote", "--symref", clean_url, "HEAD"],
+        capture_output=True, text=True, check=True, timeout=25,
+    )
+    branch = "main"
+    sha = ""
+    for line in res.stdout.splitlines():
+        if line.startswith("ref: refs/heads/"):
+            branch = line.split("ref: refs/heads/", 1)[1].split()[0]
+        elif "\tHEAD" in line:
+            sha = line.split()[0]
+
+    if "github.com/" in clean_url:
+        owner, repo = clean_url.split("github.com/")[1].split("/")[:2]
         zip_url = f"https://github.com/{owner}/{repo}/archive/refs/heads/{branch}.zip"
         return branch, sha, zip_url
-    if "invent.kde.org/" in url:
-        path = url.rstrip("/").split("invent.kde.org/")[1]
+    if "invent.kde.org/" in clean_url or "gitlab.com/" in clean_url:
+        host = "invent.kde.org" if "invent.kde.org/" in clean_url else "gitlab.com"
+        path = clean_url.split(f"{host}/")[1]
         repo = path.split("/")[-1]
-        encoded = urllib.parse.quote(path, safe="")
-        req = urllib.request.Request(
-            f"https://invent.kde.org/api/v4/projects/{encoded}",
-            headers={"User-Agent": "CustomIcons-Updater"},
-        )
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            branch = json.loads(resp.read().decode()).get("default_branch", "master")
-        req2 = urllib.request.Request(
-            f"https://invent.kde.org/api/v4/projects/{encoded}/repository/commits/{branch}",
-            headers={"User-Agent": "CustomIcons-Updater"},
-        )
-        with urllib.request.urlopen(req2, timeout=20) as resp:
-            sha = json.loads(resp.read().decode()).get("id", "")
-        zip_url = f"https://invent.kde.org/{path}/-/archive/{branch}/{repo}-{branch}.zip"
+        zip_url = f"https://{host}/{path}/-/archive/{branch}/{repo}-{branch}.zip"
         return branch, sha, zip_url
-    raise ValueError(f"Unsupported URL: {url}")
+    raise ValueError(f"URL no soportada (usa GitHub, GitLab o invent.kde.org): {url}")
 
 
 def copy_icon_files(src_dir: Path, dst_dir: Path, skip_symbolic: bool = True):
@@ -195,16 +115,20 @@ def copy_icon_files(src_dir: Path, dst_dir: Path, skip_symbolic: bool = True):
             if ".." in str(target):
                 resolved = item.resolve()
                 if resolved.exists() and resolved.is_file():
+                    if dst_item.exists() or dst_item.is_symlink():
+                        dst_item.unlink()
                     shutil.copy2(resolved, dst_item)
             else:
                 if dst_item.exists() or dst_item.is_symlink():
                     dst_item.unlink()
                 os.symlink(target, dst_item)
         elif item.is_file() and item.suffix.lower() in (".svg", ".png"):
+            if dst_item.exists() or dst_item.is_symlink():
+                dst_item.unlink()
             shutil.copy2(item, dst_item)
 
 
-def init_breeze_theme(theme_dir: Path, theme_name: str, breeze_base: str, remove_color_dirs: bool = True):
+def init_breeze_theme(theme_dir: Path, breeze_base: str, remove_color_dirs: bool = True) -> str:
     base_path = BREEZE_DARK if breeze_base == "dark" else BREEZE_LIGHT
     inherits = "breeze-dark,breeze,hicolor" if breeze_base == "dark" else "breeze,hicolor"
 
@@ -217,7 +141,9 @@ def init_breeze_theme(theme_dir: Path, theme_name: str, breeze_base: str, remove
     if remove_color_dirs:
         for d in BREEZE_COLOR_DIRS:
             t = theme_dir / d
-            if t.exists():
+            if t.is_symlink():
+                t.unlink()
+            elif t.exists():
                 shutil.rmtree(t)
     return inherits
 
@@ -237,12 +163,14 @@ def update_index_theme(theme_dir: Path, theme_name: str, inherits: str, extra_di
             continue
         elif line.startswith("Inherits="):
             out.append(f"Inherits={inherits}")
-        elif line.startswith("Directories="):
-            existing = [x for x in line.split("=", 1)[1].split(",") if x and x not in removed_dirs]
-            for d in extra_dirs:
-                if d not in existing:
-                    existing.append(d)
-            out.append("Directories=" + ",".join(existing))
+        elif line.startswith("Directories=") or line.startswith("ScaledDirectories="):
+            key, val = line.split("=", 1)
+            existing = [x for x in val.split(",") if x and x not in removed_dirs]
+            if key == "Directories":
+                for d in extra_dirs:
+                    if d not in existing:
+                        existing.append(d)
+            out.append(f"{key}=" + ",".join(existing))
         else:
             out.append(line)
     idx.write_text("\n".join(out) + "\n" + extra_sections, encoding="utf-8")
@@ -251,6 +179,60 @@ def update_index_theme(theme_dir: Path, theme_name: str, inherits: str, extra_di
 def find_repo_root(extracted_repo_dir: Path) -> Path:
     dirs = [d for d in extracted_repo_dir.iterdir() if d.is_dir()]
     return dirs[0] if len(dirs) == 1 else extracted_repo_dir
+
+
+def add_dir_entry(extra_dirs: list, extra_sections: list, rel_path: str, context: str, size: int, scalable: bool = False):
+    if rel_path not in extra_dirs:
+        extra_dirs.append(rel_path)
+        if scalable:
+            extra_sections.append(f"\n[{rel_path}]\nContext={context}\nSize={size}\nMinSize=16\nMaxSize=256\nType=Scalable\n")
+        else:
+            extra_sections.append(f"\n[{rel_path}]\nContext={context}\nSize={size}\nType=Fixed\n")
+
+
+def copy_auto_layout(src_root: Path, theme_dir: Path, extra_dirs: list, extra_sections: list):
+    """Auto-detect and copy color apps & places directories from any standard XDG icon theme."""
+    # 1. src/ + links/ layout
+    if (src_root / "src").is_dir():
+        for cat, ctx in (("apps", "Applications"), ("places", "Places")):
+            for sub in ("scalable", "32", "48", "64", "96", "128"):
+                for base in ("src", "links"):
+                    p1 = src_root / base / cat / sub
+                    p2 = src_root / base / sub / cat
+                    if p1.is_dir() or p2.is_dir():
+                        dst = theme_dir / f"{cat}/{sub}"
+                        copy_icon_files(p1, dst)
+                        copy_icon_files(p2, dst)
+                        sz = 48 if sub == "scalable" else int(sub)
+                        add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sub}", ctx, sz, scalable=(sub == "scalable"))
+        if extra_dirs:
+            return
+
+    # 2. Direct category-first layout: <root>/{apps,places}/{32,48,64,96,128,scalable}
+    for cat, ctx in (("apps", "Applications"), ("places", "Places")):
+        cat_dir = src_root / cat
+        if cat_dir.is_dir():
+            for sub in sorted(cat_dir.iterdir()):
+                if not sub.is_dir():
+                    continue
+                if sub.name in ("scalable", "32", "48", "64", "96", "128", "256"):
+                    copy_icon_files(sub, theme_dir / f"{cat}/{sub.name}")
+                    sz = 64 if sub.name == "scalable" else int(sub.name)
+                    add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sub.name}", ctx, sz, scalable=(sub.name in ("scalable", "64", "128", "256")))
+
+    # 3. Direct size-first layout: <root>/{32,32x32,48,48x48,64,64x64,96,96x96,128,128x128,scalable}/{apps,places}
+    size_map = {
+        "32": 32, "32x32": 32, "42x42": 42, "48": 48, "48x48": 48,
+        "64": 64, "64x64": 64, "84x84": 84, "96": 96, "96x96": 96,
+        "128": 128, "128x128": 128, "scalable": 64,
+    }
+    for sz_name, sz in size_map.items():
+        sz_dir = src_root / sz_name
+        if sz_dir.is_dir():
+            for cat, ctx in (("apps", "Applications"), ("places", "Places")):
+                if (sz_dir / cat).is_dir():
+                    copy_icon_files(sz_dir / cat, theme_dir / f"{sz_name}/{cat}")
+                    add_dir_entry(extra_dirs, extra_sections, f"{sz_name}/{cat}", ctx, sz, scalable=(sz_name == "scalable" or sz >= 64))
 
 
 def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
@@ -267,12 +249,13 @@ def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
             ("84x84", ["apps"]), ("96x96", ["apps", "places"]),
             ("128x128", ["apps", "places"]),
         ]
-        for sz, cats in sizes_cats:
-            for cat in cats:
-                copy_icon_files(papirus_root / sz / cat, theme_dir / sz / cat)
         for t in ("Brisus", "Brisus-Dark", "Brisus-Light"):
-            if (ICONS_DIR / t).is_dir():
-                subprocess.run(["gtk-update-icon-cache", "-f", "-t", str(ICONS_DIR / t)], check=False)
+            t_dir = ICONS_DIR / t
+            if t_dir.is_dir():
+                for sz, cats in sizes_cats:
+                    for cat in cats:
+                        copy_icon_files(papirus_root / sz / cat, t_dir / sz / cat)
+                subprocess.run(["gtk-update-icon-cache", "-f", "-t", str(t_dir)], check=False)
         return
 
     if layout == "ocean":
@@ -283,17 +266,9 @@ def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
         subprocess.run(["gtk-update-icon-cache", "-f", "-t", str(theme_dir)], check=False)
         return
 
-    inherits = init_breeze_theme(theme_dir, name, cfg["breeze_base"], remove_color_dirs=True)
+    inherits = init_breeze_theme(theme_dir, cfg["breeze_base"], remove_color_dirs=True)
     extra_dirs = []
     extra_sections = []
-
-    def add_dir(rel_path: str, context: str, size: int, scalable: bool = False):
-        if rel_path not in extra_dirs:
-            extra_dirs.append(rel_path)
-            if scalable:
-                extra_sections.append(f"\n[{rel_path}]\nContext={context}\nSize={size}\nMinSize=16\nMaxSize=256\nType=Scalable\n")
-            else:
-                extra_sections.append(f"\n[{rel_path}]\nContext={context}\nSize={size}\nType=Fixed\n")
 
     if layout == "src_links":
         for cat, ctx in (("apps", "Applications"), ("places", "Places")):
@@ -306,16 +281,16 @@ def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
                         copy_icon_files(p1, dst)
                         copy_icon_files(p2, dst)
                         sz = 48 if sub == "scalable" else int(sub)
-                        add_dir(f"{cat}/{sub}", ctx, sz, scalable=(sub == "scalable"))
+                        add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sub}", ctx, sz, scalable=(sub == "scalable"))
     elif layout == "hatter":
         for cat, ctx in (("apps", "Applications"), ("places", "Places")):
             copy_icon_files(root / "Hatter" / "scalable" / cat, theme_dir / f"scalable/{cat}")
-            add_dir(f"scalable/{cat}", ctx, 64, scalable=True)
+            add_dir_entry(extra_dirs, extra_sections, f"scalable/{cat}", ctx, 64, scalable=True)
     elif layout == "flatery":
         for cat, ctx in (("apps", "Applications"), ("places", "Places")):
             for sz in ("32", "48", "64"):
                 copy_icon_files(root / "Flatery" / cat / sz, theme_dir / f"{cat}/{sz}")
-                add_dir(f"{cat}/{sz}", ctx, int(sz), scalable=(sz == "64"))
+                add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sz}", ctx, int(sz), scalable=(sz == "64"))
     elif layout == "zafiro":
         for cat, ctx in (("apps", "Applications"), ("places", "Places")):
             for sub in ("48", "scalable"):
@@ -323,7 +298,7 @@ def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
                 if src.is_dir():
                     copy_icon_files(src, theme_dir / f"{cat}/{sub}")
                     sz = 48 if sub == "scalable" else int(sub)
-                    add_dir(f"{cat}/{sub}", ctx, sz, scalable=(sub == "scalable"))
+                    add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sub}", ctx, sz, scalable=(sub == "scalable"))
     elif layout == "mkos":
         for sz_dir, sz, cat, ctx in (
             ("128x128", 128, "apps", "Applications"),
@@ -333,98 +308,191 @@ def build_from_extracted(cfg: dict, extracted_repo_dir: Path):
             src = root / sz_dir / cat
             if src.is_dir():
                 copy_icon_files(src, theme_dir / f"{sz_dir}/{cat}")
-                add_dir(f"{sz_dir}/{cat}", ctx, sz, scalable=(sz == 128))
+                add_dir_entry(extra_dirs, extra_sections, f"{sz_dir}/{cat}", ctx, sz, scalable=(sz == 128))
     elif layout == "diagonal":
         for cat, ctx in (("apps", "Applications"), ("places", "Places")):
             for sz in ("32", "48", "64"):
                 src = root / "base" / cat / sz
                 if src.is_dir():
                     copy_icon_files(src, theme_dir / f"{cat}/{sz}")
-                    add_dir(f"{cat}/{sz}", ctx, int(sz), scalable=False)
+                    add_dir_entry(extra_dirs, extra_sections, f"{cat}/{sz}", ctx, int(sz), scalable=False)
             src_sc = root / "base" / "scalable" / cat
             if src_sc.is_dir():
                 copy_icon_files(src_sc, theme_dir / f"scalable/{cat}")
-                add_dir(f"scalable/{cat}", ctx, 64, scalable=True)
+                add_dir_entry(extra_dirs, extra_sections, f"scalable/{cat}", ctx, 64, scalable=True)
+    else:
+        subpath = cfg.get("subpath", "")
+        src_root = root / subpath if subpath else root
+        copy_auto_layout(src_root, theme_dir, extra_dirs, extra_sections)
 
     update_index_theme(theme_dir, name, inherits, extra_dirs, "".join(extra_sections), BREEZE_COLOR_DIRS)
     subprocess.run(["gtk-update-icon-cache", "-f", "-t", str(theme_dir)], check=False)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Build or update custom Breeze-merged icon themes.")
-    parser.add_argument("--from-dir", type=Path, help="Build new themes from an existing extracted directory")
-    parser.add_argument("--metadata", type=Path, help="Optional metadata.json with pre-fetched SHAs")
-    parser.add_argument("--force", action="store_true", help="Force re-download and update all repos")
-    args = parser.parse_args()
+def download_and_extract(zip_url: str, dest_dir: Path):
+    zpath = dest_dir / "repo.zip"
+    edir = dest_dir / "extracted"
+    edir.mkdir(parents=True, exist_ok=True)
+    req = urllib.request.Request(zip_url, headers={"User-Agent": "CustomIcons-Updater"})
+    with urllib.request.urlopen(req, timeout=180) as resp, open(zpath, "wb") as f:
+        shutil.copyfileobj(resp, f)
+    subprocess.run(["unzip", "-q", "-o", str(zpath), "-d", str(edir)], check=True)
+    return edir
 
-    state = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {}
 
-    if args.from_dir:
-        meta_by_repo = {}
-        if args.metadata and args.metadata.exists():
-            for m in json.loads(args.metadata.read_text()):
-                meta_by_repo[m["repo"]] = m
-        for cfg in THEMES:
-            repo = cfg["repo"]
-            if cfg["layout"] in ("papirus", "ocean"):
-                if repo in meta_by_repo:
-                    state[repo] = {"url": cfg["url"], "sha": meta_by_repo[repo]["sha"], "branch": meta_by_repo[repo]["branch"]}
-                continue
-            ext_dir = args.from_dir / repo
-            if ext_dir.is_dir():
-                print(f"Building {cfg['theme_name']} from {repo}...")
-                build_from_extracted(cfg, ext_dir)
-                if repo in meta_by_repo:
-                    state[repo] = {"url": cfg["url"], "sha": meta_by_repo[repo]["sha"], "branch": meta_by_repo[repo]["branch"]}
-        STATE_FILE.write_text(json.dumps(state, indent=2))
-        print("All themes built and state saved.")
-        return
-
-    # Online update check mode
-    print("Checking for upstream icon updates...")
+def run_updates(force: bool = False):
+    state = load_state()
+    themes = get_all_themes(state)
+    print("Comprobando actualizaciones de iconos...")
     to_update = []
-    for cfg in THEMES:
+    for cfg in themes:
         repo = cfg["repo"]
         try:
             branch, sha, zip_url = get_remote_head(cfg["url"])
             old_sha = state.get(repo, {}).get("sha", "")
-            if args.force or not old_sha or (sha and sha != old_sha):
-                print(f"  [UPDATE] {repo} -> {cfg['theme_name']} ({old_sha[:7] or 'none'} -> {sha[:7]})")
+            if force or not old_sha or (sha and sha != old_sha):
+                print(f"  [ACTUALIZAR] {repo} -> {cfg['theme_name']} ({old_sha[:7] or 'nuevo'} -> {sha[:7]})")
                 to_update.append((cfg, branch, sha, zip_url))
             else:
-                print(f"  [OK]     {repo} ({sha[:7]})")
+                print(f"  [OK]         {repo} ({sha[:7]})")
         except Exception as e:
-            print(f"  [WARN]   {repo}: could not check ({e})")
+            print(f"  [AVISO]      {repo}: no se pudo comprobar ({e})")
 
     if not to_update:
-        print("Everything is already up to date.")
+        print("Todos los temas están al día.")
         return
 
     with tempfile.TemporaryDirectory(prefix="customicons_upd_") as tmp:
         tmp_path = Path(tmp)
+
         def process(item):
             cfg, branch, sha, zip_url = item
-            repo = cfg["repo"]
-            zpath = tmp_path / f"{repo}.zip"
-            edir = tmp_path / repo
-            edir.mkdir(parents=True, exist_ok=True)
-            req = urllib.request.Request(zip_url, headers={"User-Agent": "CustomIcons-Updater"})
-            with urllib.request.urlopen(req, timeout=180) as resp, open(zpath, "wb") as f:
-                shutil.copyfileobj(resp, f)
-            with zipfile.ZipFile(zpath, "r") as zf:
-                zf.extractall(edir)
+            edir = download_and_extract(zip_url, tmp_path / cfg["repo"])
             build_from_extracted(cfg, edir)
-            return repo, branch, sha, cfg["url"]
+            return cfg, branch, sha
 
         with ThreadPoolExecutor(max_workers=4) as ex:
             futs = [ex.submit(process, it) for it in to_update]
             for fut in as_completed(futs):
-                repo, branch, sha, url = fut.result()
-                state[repo] = {"url": url, "sha": sha, "branch": branch}
-                print(f"Updated {repo} ({sha[:7]})")
+                cfg, branch, sha = fut.result()
+                repo = cfg["repo"]
+                entry = state.get(repo, {})
+                entry.update({"url": cfg["url"], "sha": sha, "branch": branch})
+                state[repo] = entry
+                print(f"Actualizado {cfg['theme_name']} ({sha[:7]})")
 
-    STATE_FILE.write_text(json.dumps(state, indent=2))
-    print("Update complete!")
+    save_state(state)
+    print("Actualización completada.")
+
+
+def suggest_brisa_name(repo_name: str) -> str:
+    clean = re.sub(r"[-_]?icon[-_]?theme$", "", repo_name, flags=re.IGNORECASE)
+    clean = re.sub(r"[-_]?icons?$", "", clean, flags=re.IGNORECASE)
+    clean = clean.strip("-_ ") or repo_name
+    return f"Brisa{clean[0].upper()}{clean[1:]}"
+
+
+def add_theme_interactive():
+    url = input("\nURL del repositorio (GitHub / GitLab / invent.kde.org): ").strip()
+    if not url:
+        print("URL vacía. Cancelando.")
+        return
+
+    clean_url = url.rstrip("/")
+    if clean_url.endswith(".git"):
+        clean_url = clean_url[:-4]
+    repo_name = clean_url.split("/")[-1]
+    default_name = suggest_brisa_name(repo_name)
+
+    theme_name = input(f"Nombre para el tema modificado [{default_name}]: ").strip() or default_name
+    base_choice = input("Base monocromática de Breeze? [D]ark / [L]ight (por defecto Dark): ").strip().lower()
+    breeze_base = "light" if base_choice.startswith("l") else "dark"
+
+    print(f"\nConsultando {clean_url}...")
+    branch, sha, zip_url = get_remote_head(clean_url)
+    print(f"Descargando rama '{branch}' ({sha[:7]})...")
+
+    with tempfile.TemporaryDirectory(prefix="customicons_add_") as tmp:
+        edir = download_and_extract(zip_url, Path(tmp))
+        root = find_repo_root(edir)
+
+        # Detect if there are multiple index.theme subdirs or src/
+        subpath = ""
+        if not (root / "src").is_dir() and not (root / "apps").is_dir() and not (root / "48x48").is_dir():
+            candidates = sorted(
+                {str(p.parent.relative_to(root)) for p in root.rglob("index.theme") if "cursor" not in str(p).lower()}
+            )
+            if len(candidates) > 1:
+                print("\nSe encontraron varias variantes en el repositorio:")
+                for i, c in enumerate(candidates, 1):
+                    print(f"  {i}) {c}")
+                pick = input("Elige el número de la variante [1]: ").strip()
+                idx = int(pick) - 1 if pick.isdigit() and 1 <= int(pick) <= len(candidates) else 0
+                subpath = "" if candidates[idx] == "." else candidates[idx]
+            elif len(candidates) == 1 and candidates[0] != ".":
+                subpath = candidates[0]
+
+        cfg = {
+            "repo": repo_name,
+            "url": clean_url,
+            "theme_name": theme_name,
+            "layout": "auto",
+            "breeze_base": breeze_base,
+            "subpath": subpath,
+        }
+        print(f"Construyendo {theme_name} (Breeze {breeze_base} + {repo_name})...")
+        build_from_extracted(cfg, edir)
+
+    state = load_state()
+    state[repo_name] = {
+        "url": clean_url,
+        "sha": sha,
+        "branch": branch,
+        "custom": True,
+        "theme_name": theme_name,
+        "layout": "auto",
+        "breeze_base": breeze_base,
+        "subpath": subpath,
+    }
+    save_state(state)
+    print(f"\nTema '{theme_name}' creado en {ICONS_DIR / theme_name} y añadido al seguimiento de actualizaciones.")
+
+
+def interactive_menu():
+    while True:
+        print("\n=== Gestor de CustomIcons ===")
+        print("1) Buscar y aplicar actualizaciones de los temas instalados")
+        print("2) Agregar un nuevo tema de iconos desde una URL (GitHub / GitLab)")
+        print("3) Forzar reconstrucción de todos los temas")
+        print("4) Salir")
+        choice = input("Selecciona una opción [1-4]: ").strip()
+        if choice == "1":
+            run_updates(force=False)
+        elif choice == "2":
+            add_theme_interactive()
+        elif choice == "3":
+            run_updates(force=True)
+        elif choice == "4" or choice.lower() in ("q", "salir", "exit"):
+            break
+        else:
+            print("Opción no válida.")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Gestor interactivo y actualizador de temas CustomIcons.")
+    parser.add_argument("--update", action="store_true", help="Comprobar y aplicar actualizaciones sin menú")
+    parser.add_argument("--force", action="store_true", help="Forzar descarga y reconstrucción de todos los temas")
+    parser.add_argument("--add", action="store_true", help="Ir directo a agregar un nuevo tema por URL")
+    args = parser.parse_args()
+
+    if args.force:
+        run_updates(force=True)
+    elif args.update:
+        run_updates(force=False)
+    elif args.add:
+        add_theme_interactive()
+    else:
+        interactive_menu()
 
 
 if __name__ == "__main__":
