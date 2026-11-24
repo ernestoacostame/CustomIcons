@@ -1,0 +1,17 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#bdbdbd"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#878787" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <g transform="translate(0,-9.5)" fill="#494947">
+  <circle cx="32" cy="24.5" r="6"/>
+  <circle cx="49" cy="24.5" r="6"/>
+  <circle cx="15" cy="24.5" r="6"/>
+ </g>
+ <g transform="rotate(180,32,28.25)" fill="#fff">
+  <circle cx="32" cy="24.5" r="6"/>
+  <circle cx="49" cy="24.5" r="6"/>
+  <circle cx="15" cy="24.5" r="6"/>
+ </g>
+ <circle transform="scale(-1)" cx="-32" cy="-49" r="6" fill="#fff"/>
+ <circle transform="scale(-1)" cx="-15" cy="-49" r="6" fill="#494947"/>
+ <circle transform="scale(-1)" cx="-49" cy="-49" r="6" fill="#494947"/>
+</svg>

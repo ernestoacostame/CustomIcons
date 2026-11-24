@@ -1,0 +1,18 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect transform="scale(-1)" x="-60" y="-60" width="56" height="56" rx="6" ry="6" fill="#324cb2"/>
+ <path d="m60 10-56 44c0 3.324 2.676 6 6 6h44c3.324 0 6-2.676 6-6z" fill="#869efc" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <path d="m55.46 27.07-22.511 19.756-2.9785-3.3534 22.511-19.756z" fill="#e3fbe6" stroke-width="0"/>
+ <path d="m51.985 23.157-22.511 19.756-2.9785-3.3534 22.511-19.756z" fill="#e3fbe6" stroke-width="0"/>
+ <path d="m48.509 19.245-22.511 19.756-2.9785-3.3534 22.511-19.756z" fill="#e3fbe6" stroke-width="0"/>
+ <path d="m56.584 26.039c1.8021-1.5323 3.1195-2.3219 2.0068-5.2848-1.1127-2.9629-3.5939-5.6695-6.5087-7.1001-2.9148-1.4307-3.5864-0.286-5.3885 1.2463" fill="#fc366b" stroke-width="0"/>
+ <path d="m23.02 35.648-2.5086 7.175 4.9625 5.5909 7.4755-1.5879z" fill="#ffe7cb" stroke-width="0"/>
+ <path d="m18 50 2.5103-7.1759 4.9641 5.5891z" fill="#0d1a05" stroke-width="0"/>
+ <g transform="translate(0 1)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.6667">
+  <circle cx="14" cy="14" r="4" fill="#f7252c" style="paint-order:markers fill stroke"/>
+  <circle cx="14" cy="25" r="4" fill="#f866cf" style="paint-order:markers fill stroke"/>
+  <circle cx="14" cy="36" r="4" fill="#0be745" style="paint-order:markers fill stroke"/>
+  <circle cx="14" cy="47" r="4" fill="#fffeed" style="paint-order:markers fill stroke"/>
+  <circle cx="25" cy="14" r="4" fill="#fff70d" style="paint-order:markers fill stroke"/>
+  <circle cx="25" cy="25" r="4" fill="#ffa35f" style="paint-order:markers fill stroke"/>
+ </g>
+</svg>

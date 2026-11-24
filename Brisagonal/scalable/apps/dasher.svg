@@ -1,0 +1,10 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#f6a01e"/>
+ <path d="m60 10-56 44c0 3.324 2.676 6 6 6h44c3.324 0 6-2.676 6-6z" fill="#3140e3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <path d="m32 4v33h28v-27c0-3.324-2.676-6-6-6z" fill="#4680b4"/>
+ <path d="m60 10-28 22v7h28z" fill="#74a1c9"/>
+ <path d="m40 39v21h14c3.324 0 6-2.676 6-6v-15h-20z" fill="#4cf262"/>
+ <path d="m30 4v37h0.5 1.5 6v19h2v-19h20v-2h-28v-35h-2z" fill="#05090c"/>
+ <text transform="scale(1.0144 .98581)" x="37.066509" y="31.446203" fill="#fafcfd" font-family="'Adwaita Mono'" font-size="27.603px" font-weight="bold" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1686" xml:space="preserve"><tspan x="37.066509" y="31.446203" stroke-width="1.1686">A</tspan></text>
+ <text transform="scale(1.0389 .96257)" x="42.56076" y="60.255535" fill="#fafcfd" font-family="'Adwaita Mono'" font-size="21.202px" font-weight="bold" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2823" xml:space="preserve"><tspan x="42.56076" y="60.255535" stroke-width="1.2823">B</tspan></text>
+</svg>

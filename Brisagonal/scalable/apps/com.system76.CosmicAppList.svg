@@ -1,0 +1,15 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#49b8c6" fill-opacity=".61961"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#22818c" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <circle cx="46" cy="36" r="2" color="#000000" fill="#144a51" stroke-width=".75236"/>
+ <rect x="7" y="12.833" width="22" height="18.333" ry="2.75" fill="#ffce7d" fill-opacity=".79628" stroke-width="0"/>
+ <circle cx="18" cy="36" r="2" color="#000000" fill="#fff" fill-opacity=".85248" stroke-width=".75236"/>
+ <g transform="translate(0,5)">
+  <rect x="7" y="40" width="50" height="12" rx="3" ry="3" fill="#fff" opacity=".605"/>
+  <rect x="10" y="42" width="8" height="8" rx="2" ry="2" fill="#ff0d0d"/>
+  <rect x="22" y="42" width="8" height="8" rx="2" ry="2" fill="#fff31e"/>
+  <rect x="34" y="42" width="8" height="8" rx="2" ry="2" fill="#009419"/>
+  <rect x="46" y="42" width="8" height="8" rx="2" ry="2" fill="#303030"/>
+ </g>
+ <rect x="35" y="12.833" width="22" height="18.333" ry="2.75" fill="#fd9e00" stroke-width="0"/>
+</svg>

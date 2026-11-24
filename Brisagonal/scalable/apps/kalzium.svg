@@ -1,0 +1,29 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient2" x1="8" x2="28.866" y1="30.969" y2="30.969" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0c8406" stop-opacity=".96358" offset=".32412"/>
+   <stop stop-color="#b3f8b4" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient4" x1="34.44" x2="55.306" y1="17.602" y2="17.602" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#8b8bff" offset="0"/>
+   <stop stop-color="#009" offset=".67329"/>
+  </linearGradient>
+  <linearGradient id="linearGradient5" x1="37" x2="58" y1="40" y2="54" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ffcbcb" offset="0"/>
+   <stop stop-color="#e90000" offset=".55478"/>
+  </linearGradient>
+ </defs>
+ <rect transform="scale(-1)" x="-60" y="-60" width="56" height="56" rx="6" ry="6" fill="#6ac5ff"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#0793ee" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <ellipse cx="44.873" cy="17.602" rx="10.433" ry="10.48" fill="url(#linearGradient4)" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse transform="matrix(.96279 .27025 -.268 .96342 0 0)" cx="48.697" cy="-.60234" rx="4.7834" ry="3.274" fill="#fff" fill-opacity=".74517" fill-rule="evenodd" stroke-width=".13191"/>
+ <path d="m36.992 18.698-15.554 8.4779c0.18585 2.4351 1.5201 4.044 3.0788 5.3303l15.624-8.7166c-0.20929-2.3555-0.9379-3.8273-3.1492-5.0917z" fill="#040000" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse cx="18.433" cy="30.969" rx="10.433" ry="10.48" fill="url(#linearGradient2)" fill-opacity=".7567" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse transform="matrix(.96279 .27025 -.268 .96342 0 0)" cx="26.422" cy="19.403" rx="4.7834" ry="3.274" fill="#fff" fill-opacity=".81512" fill-rule="evenodd" stroke-width=".13191"/>
+ <path d="m49.331 41.457-0.6111-17.765c-2.2523-0.91973-4.2811-0.43838-6.1227 0.38867l0.79229 17.935c2.1919 0.86314 3.8282 0.86502 5.9415-0.55845z" fill="#040000" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse cx="45.567" cy="46.52" rx="10.433" ry="10.48" fill="#ab0000" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse transform="matrix(.96279 .27025 -.268 .96342 0 0)" cx="56.278" cy="27.287" rx="4.7834" ry="3.274" fill="#fff" fill-opacity=".75011" fill-rule="evenodd" stroke-width=".13191"/>
+ <ellipse cx="45.567" cy="46.52" rx="10.433" ry="10.48" fill="url(#linearGradient5)" fill-rule="evenodd" stroke-width=".34855"/>
+ <ellipse transform="matrix(.96279 .27025 -.268 .96342 0 0)" cx="56.278" cy="27.287" rx="4.7834" ry="3.274" fill="#fff" fill-opacity=".61434" fill-rule="evenodd" stroke-width=".13191"/>
+ <path d="m40 42.007-14.585-10.007c-2.1065 1.2247-2.9561 3.1011-3.4152 5.0346l14.831 9.9654c2.0245-1.2107 3.0218-2.4938 3.1691-4.9927z" fill="#040000" fill-rule="evenodd" stroke-width=".3463"/>
+</svg>

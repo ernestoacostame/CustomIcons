@@ -1,0 +1,11 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#71f685"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#282c2e" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <path d="m32 4v56h22c3.324 0 6-2.676 6-6v-44c0-3.324-2.676-6-6-6h-22z" fill="#71f685" stroke-linecap="square" stroke-width="1.0032"/>
+ <path d="m60 10-28 22v28h22c3.324 0 6-2.676 6-6v-44z" fill="#000902" stroke-linecap="square" stroke-width="1.0032"/>
+ <path d="m22.017 46.144c-0.016814 2.2614 0.98319 2.8558 2.9832 2.8558h3v3l-17-0.00118v-2.9988h1c2.6888 0 3.6558-2.0954 4.6675-4.4131l12.332-34.587h8l14 34c1.7575 3.3549 2.9625 5 6 5v2.9994l-20 5.87e-4v-3c5 0 6.4717-1 6.4717-4l-2.4717-6h-16.432zm9.9832-31.144-6 19h13" fill="#000902" stroke-width="1.9966"/>
+ <path d="m32 4v28l28-22c0-3.324-2.676-6-6-6h-22z" fill="#71f685" style="paint-order:markers fill stroke"/>
+ <path d="m32 10v5l7 19h-7v5h9l2.4727 6c0 3-1.4727 4-6.4727 4v3h20v-3c-3.0375 0-4.2425-1.6451-6-5l-14-34h-5z" fill="#282c2e" stroke-linecap="square" stroke-width="1.0032"/>
+ <path d="m42.623 23.654-5.7656 4.5293 2.1426 5.8164h-7v5h9l2.4727 6c0 3-1.4727 4-6.4727 4v3h20v-3c-3.0375 0-4.2425-1.6451-6-5l-8.377-20.346z" fill="#fff"/>
+ <path d="m29 10-12.064 33.836 12.52-9.8359h-3.4551l6-19v-5h-3z" fill="#fff" stroke-linecap="square" stroke-width="1.0032"/>
+</svg>

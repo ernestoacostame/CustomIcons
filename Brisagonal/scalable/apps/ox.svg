@@ -1,0 +1,18 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <radialGradient id="radialGradient6" cx="32" cy="32" r="20" gradientTransform="translate(.21289 .26758)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#fafbfd" offset="0"/>
+   <stop stop-color="#233e61" offset=".75154"/>
+  </radialGradient>
+  <radialGradient id="radialGradient11" cx="32" cy="32" r="20" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#fafbfd" offset="0"/>
+   <stop stop-color="#3a6c9c" offset=".78136"/>
+  </radialGradient>
+ </defs>
+ <path d="m10 4h44c3.324 0 6 2.676 6 6v44c0 3.324-2.676 6-6 6h-44c-3.324 0-6-2.676-6-6v-44c0-3.324 2.676-6 6-6z" fill="#3a6c9c"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#233e61" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <path d="m32.213 12.268a20 20 0 0 0-20 20 20 20 0 0 0 4.2832 12.348l31.434-24.695a20 20 0 0 0-15.717-7.6523zm15.787 7.7324a20 20 0 0 1 0.83789 1.2266 20 20 0 0 0-0.83789-1.2266zm1.4844 2.1934a20 20 0 0 1 0.74609 1.4883 20 20 0 0 0-0.74609-1.4883zm1.168 2.3418a20 20 0 0 1 0.55859 1.6133 20 20 0 0 0-0.55859-1.6133zm0.86524 2.5156a20 20 0 0 1 0.33789 1.6738 20 20 0 0 0-0.33789-1.6738zm0.51953 2.584a20 20 0 0 1 0.17578 2.6328 20 20 0 0 0-0.17578-2.6328zm-34.775 15.854a20 20 0 0 0 0.89258 0.99609 20 20 0 0 1-0.89258-0.99609zm1.8105 1.7988a20 20 0 0 0 1.043 0.90039 20 20 0 0 1-1.043-0.90039zm2.127 1.625a20 20 0 0 0 1.0742 0.70703 20 20 0 0 1-1.0742-0.70703zm2.3105 1.3164a20 20 0 0 0 1.0996 0.53516 20 20 0 0 1-1.0996-0.53516zm2.6719 1.0684a20 20 0 0 0 0.88086 0.29492 20 20 0 0 1-0.88086-0.29492z" fill="url(#radialGradient6)" stroke-linecap="square" stroke-width=".999"/>
+ <path d="m47.717 19.652-31.443 24.703c3.7916 4.8262 9.5891 7.6444 15.727 7.6445 11.046 0 20-8.9543 20-20-1.6e-4 -4.4809-1.5148-8.8242-4.2832-12.348z" fill="url(#radialGradient11)" stroke-linecap="square" stroke-width=".999"/>
+ <path d="m9.8214 21c-2.6711 0-4.8214 2.0442-4.8214 4.5833v12.833c0 2.5392 2.1504 4.5833 4.8214 4.5833h17.357c2.6711 0 4.8214-2.0442 4.8214-4.5833v-12.833c0-2.5392-2.1504-4.5833-4.8214-4.5833zm1.1786 5h15v12h-15z" fill="#f9f9f9" stroke-linecap="square" stroke-width=".81159"/>
+ <path d="m32 21 9.5 11-9.5 11h8l5.5-6.3691 5.5 6.3691h8l-9.5-11 9.5-11h-8l-5.5 6.3691-5.5-6.3691h-8z" fill="#f9f9f9" stroke-linecap="square" stroke-width=".92168"/>
+</svg>

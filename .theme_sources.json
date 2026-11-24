@@ -1,0 +1,82 @@
+{
+  "BigSur-icon-theme": {
+    "url": "https://github.com/yeyushengfan258/BigSur-icon-theme",
+    "sha": "9eac0309f53d32d26aea1fff55f9a56ae97769f6",
+    "branch": "master"
+  },
+  "Colloid-icon-theme": {
+    "url": "https://github.com/vinceliuice/Colloid-icon-theme",
+    "sha": "ceac6608ecd0e40025cbc2ebbd32bf0e0f4ebc6a",
+    "branch": "main"
+  },
+  "Diagonal-icon-theme": {
+    "url": "https://github.com/tamascsabi/Diagonal-icon-theme",
+    "sha": "9191af03b7251efe9e45ed9fd0fdeb527d5949e8",
+    "branch": "main"
+  },
+  "Flatery": {
+    "url": "https://github.com/cbrnix/Flatery",
+    "sha": "30bef81ba98ac4c4f764e9fc1b705a86e0d27e2c",
+    "branch": "master"
+  },
+  "Fluent-icon-theme": {
+    "url": "https://github.com/vinceliuice/Fluent-icon-theme",
+    "sha": "c8a244f571ef8fb47812bdc9dbce76546cedce69",
+    "branch": "master"
+  },
+  "Hatter": {
+    "url": "https://github.com/Mibea/Hatter",
+    "sha": "9969c262801bf01264a1125a5ee3e52f2f7d4bea",
+    "branch": "main"
+  },
+  "McMojave-circle": {
+    "url": "https://github.com/vinceliuice/McMojave-circle",
+    "sha": "a9e4b9b59d39970516f1bca182934fd727be4e1d",
+    "branch": "master"
+  },
+  "Mkos-Big-Sur": {
+    "url": "https://github.com/zayronxio/Mkos-Big-Sur",
+    "sha": "29772d17999a5c771873420f3379888d66d2e3c1",
+    "branch": "master"
+  },
+  "Reversal-icon-theme": {
+    "url": "https://github.com/yeyushengfan258/Reversal-icon-theme",
+    "sha": "2c8122287e3bad5a6bf860ddd8c7e3b78cf4d451",
+    "branch": "master"
+  },
+  "Tela-icon-theme": {
+    "url": "https://github.com/vinceliuice/Tela-icon-theme",
+    "sha": "a1fffc5bfab716bd022dd228ee96fe3965cdb33d",
+    "branch": "master"
+  },
+  "Tela-circle-icon-theme": {
+    "url": "https://github.com/vinceliuice/Tela-circle-icon-theme",
+    "sha": "ee3cf47bcb05c3d99a0860b54254d2ff3d1d2c69",
+    "branch": "master"
+  },
+  "We10X-icon-theme": {
+    "url": "https://github.com/yeyushengfan258/We10X-icon-theme",
+    "sha": "0f52ff2dce554146f8f76ab2c7a5968fd773400d",
+    "branch": "master"
+  },
+  "WhiteSur-icon-theme": {
+    "url": "https://github.com/vinceliuice/WhiteSur-icon-theme",
+    "sha": "73d8040da51a9ed74e47c7366e7e9ff437601a5c",
+    "branch": "master"
+  },
+  "Zafiro-icons": {
+    "url": "https://github.com/zayronxio/Zafiro-icons",
+    "sha": "5c7f38ca3b01194104481ffb803111e31851cf5d",
+    "branch": "master"
+  },
+  "papirus-icon-theme": {
+    "url": "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme",
+    "sha": "626182cfe885b7eb2dbb7bcae5cde6d8d1048f2f",
+    "branch": "master"
+  },
+  "ocean-design": {
+    "url": "https://invent.kde.org/abetts/ocean-design",
+    "sha": "9328b2eb5a3530a6548dd1f0c1c6a3c140fbbb39",
+    "branch": "master"
+  }
+}

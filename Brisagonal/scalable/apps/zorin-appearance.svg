@@ -1,0 +1,16 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#b4d1ef"/>
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#ccc"/>
+ <path d="m10 4c-3.324 0-6 2.676-6 6l28 22v-28h-22z" fill="#ed6ea2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m4 10v22h28l-28-22z" fill="#fe8705" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m54 4c3.324 0 6 2.676 6 6l-28 22v-28z" fill="#ef47b1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m54 60c3.324 0 6-2.676 6-6l-28-22v28z" fill="#37e229" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m10 60c-3.324 0-6-2.676-6-6l28-22v28z" fill="#c8e60b" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m4 54v-22h28z" fill="#fdd716" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m60 54v-22h-28z" fill="#15b0c4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <path d="m60 10v22h-28z" fill="#37ddf8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0013" style="paint-order:markers fill stroke"/>
+ <g transform="matrix(.81818 0 0 .8 5.8182 6.4)">
+  <path d="m22.884 52c-1.2141 0-2.7035-0.87616-3.3097-1.947l-9.1192-16.106c-0.60625-1.0709-0.60625-2.8231 0-3.894l9.1192-16.106c0.60625-1.0709 2.0956-1.947 3.3097-1.947h18.233c1.2141 0 2.7035 0.87616 3.3097 1.947l9.1192 16.106c0.60625 1.0709 0.60625 2.8231 0 3.894l-9.1192 16.106c-0.60616 1.0709-2.0956 1.947-3.3097 1.947z" fill="#004a8b" stroke-width=".71198"/>
+  <path d="m17.279 18-3.3965 6h26.117l-27.209 14.074 4.4883 7.9258h29.441l3.3965-6h-26.117l27.209-14.074-4.4883-7.9258z" fill="#fff" stroke-width=".77993"/>
+ </g>
+</svg>

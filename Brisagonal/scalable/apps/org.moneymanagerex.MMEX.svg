@@ -1,0 +1,22 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient3" x1="32" x2="32" y1="8" y2="57" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#efedc3" offset=".24244"/>
+   <stop stop-color="#4ca038" stop-opacity=".81801" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient5" x1="32" x2="32" y1="28" y2="58" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#3eb62e" offset="0"/>
+   <stop stop-color="#1b5515" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient7" x1="32" x2="32" y1="10" y2="54" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#87c22a" offset="0"/>
+   <stop stop-color="#4ca038" offset="1"/>
+  </linearGradient>
+ </defs>
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#333"/>
+ <path d="m60 10-56 44c0 3.324 2.676 6 6 6h44c3.324 0 6-2.676 6-6z" fill="#d0924f" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <circle cx="32" cy="32" r="26" fill="url(#linearGradient5)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3978"/>
+ <circle cx="32" cy="32" r="24" fill="url(#linearGradient3)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2903"/>
+ <circle cx="32" cy="32" r="22" fill="url(#linearGradient7)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1828"/>
+ <path d="m29 12v6c-1.8343 0.24987-5.3781 1.165-6.9395 4.5156-0.38212 0.8606-0.58884 1.7992-0.57836 2.763 0.0447 4.1114 3.6755 6.6137 7.5178 8.112v8.0801c-1.5725-0.63997-2.1576-2.013-2.2578-3.5195h-5.7422c-0.18955 3.2133 2 8.0488 8 8.1016v5.9473h6v-5.9355c5.4269-0.73652 8-4.0086 8-7.3145 0-4.6192-4.7305-7.1235-8-8.3027v-7.8398c1.3504 0.74311 1.8948 1.9522 1.9688 3.4414h5.7422c0.088344-2.2121-0.78907-4.1257-2.3164-5.6777-1.8348-1.7387-4.3278-2.2343-5.3945-2.3711v-6zm0 10.561v5.5918c-1.0822-0.71158-1.6413-1.6516-1.8242-2.9023 0-0.09511 0.02487-1.8278 1.8242-2.6895zm6 13.033c0.04576 0.02821 0.09183 0.05659 0.13672 0.08594 2.5974 1.3935 3.2408 4.501-0.13672 5.8613z" fill="#2f562e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3623"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <rect x="4" y="4" width="56" height="56" rx="6" ry="6" fill="#78c1ff"/>
+ <path d="m4 54 56-44c0-3.324-2.676-6-6-6h-44c-3.324 0-6 2.676-6 6z" fill="#1593ff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <rect x="29" y="9" width="6" height="46" ry="3" fill="#0f4472" style="paint-order:markers fill stroke"/>
+ <path d="m40 29v6h10v4l7-7-7-7v4z" fill="#f7fbff" style="paint-order:markers fill stroke"/>
+ <path d="m24 29v6h-10v4l-7-7 7-7v4z" fill="#f7fbff" style="paint-order:markers fill stroke"/>
+</svg>

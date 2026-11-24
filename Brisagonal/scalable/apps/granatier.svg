@@ -1,0 +1,151 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient100">
+   <stop stop-color="#1eb100" offset="0"/>
+   <stop stop-color="#0d5200" offset=".55291"/>
+  </linearGradient>
+  <linearGradient id="linearGradient93" x1="7" x2="18" y1="6" y2="18" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient95" x1="21" x2="31" y1="6" y2="17" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient97" x1="49" x2="61" y1="5" y2="18" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient99" x1="34" x2="46" y1="34" y2="46" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient102" x1="48" x2="61" y1="48" y2="60" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient104" x1="19" x2="31" y1="48" y2="60" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+  <linearGradient id="linearGradient106" x1="5" x2="16" y1="48" y2="60" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient100"/>
+ </defs>
+ <path d="m17 4h30l13 13v30l-13 13h-30l-13-13v-30z"/>
+ <rect x="19" y="4" width="12" height="13" fill="url(#linearGradient95)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="33" y="4" width="12" height="13" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <path d="m47 4v13h13v-7c0-3.324-2.676-6-6-6h-7z" fill="url(#linearGradient97)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".40705" style="paint-order:stroke markers fill"/>
+ <rect x="4" y="19" width="13" height="12" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="19" y="19" width="12" height="12" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".37574" style="paint-order:stroke markers fill"/>
+ <rect x="47" y="19" width="13" height="12" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="4" y="33" width="13" height="12" fill="#f6e2c1" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="19" y="33" width="12" height="12" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".37574" style="paint-order:stroke markers fill"/>
+ <rect x="33" y="33" width="12" height="12" fill="url(#linearGradient99)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".37574" style="paint-order:stroke markers fill"/>
+ <rect x="47" y="33" width="13" height="12" fill="#f6e2c1" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="19" y="47" width="12" height="13" fill="url(#linearGradient104)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <rect x="33" y="47" width="12" height="13" fill="#1eb100" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".39108" style="paint-order:stroke markers fill"/>
+ <path d="m10 4c-3.324 0-6 2.676-6 6v7h13v-13h-7z" fill="url(#linearGradient93)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".40705" style="paint-order:stroke markers fill"/>
+ <path d="m47 47v13h7c3.324 0 6-2.676 6-6v-7h-13z" fill="url(#linearGradient102)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".40705" style="paint-order:stroke markers fill"/>
+ <path d="m4 47v7c0 3.324 2.676 6 6 6h7v-13h-13z" fill="url(#linearGradient106)" stroke-linecap="round" stroke-linejoin="bevel" stroke-width=".40705" style="paint-order:stroke markers fill"/>
+ <path d="m60 10-56 44c0 3.324 2.676 6 6 6h44c3.324 0 6-2.676 6-6z" display="none" fill="#666" opacity=".4115" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2" style="paint-order:markers fill stroke"/>
+ <path d="m78.963 52.953c-27.988-2.9843-55.975-5.9685-83.963-8.9528" opacity=".4115" style="paint-order:stroke markers fill"/>
+ <g stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="matrix(-1,0,0,1,64,0)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="matrix(-1,0,0,1,50,0)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="matrix(-1,0,0,1,92,0)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="translate(0,28)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="translate(-14,14)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <g transform="matrix(-1,0,0,1,78,-14)" stroke-linecap="square">
+  <rect x="37" y="18" width="9" height="8" fill="#e09e32" stroke-width=".92582"/>
+  <rect x="32" y="18" width="6" height="8" fill="#ecc483" stroke-width=".75593"/>
+  <rect x="37" y="18" width="1" height="8" fill="#805713" stroke-width="1.069"/>
+  <rect x="32" y="25" width="9" height="7" fill="#e09e32" stroke-width=".86603"/>
+  <rect x="40" y="25" width="6" height="7" fill="#ecc483" stroke-width=".70711"/>
+  <rect x="40" y="25" width="1" height="7" fill="#805713"/>
+  <rect x="32" y="25" width="14" height="1" fill="#805713" stroke-width=".76376"/>
+  <g stroke-width=".9661">
+   <rect x="32" y="18" width="14" height="1"/>
+   <rect x="32" y="31" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-46" width="14" height="1"/>
+   <rect transform="rotate(90)" x="18" y="-33" width="14" height="1"/>
+  </g>
+ </g>
+ <path transform="matrix(.88388 0 0 .88388 31.23 -7.368)" d="m-3 24-2.9176-1.3869-1.0824 3.0437-1.0824-3.0437-2.9176 1.3869 1.3869-2.9176-3.0437-1.0824 3.0437-1.0824-1.3869-2.9176 2.9176 1.3869 1.0824-3.0437 1.0824 3.0437 2.9176-1.3869-1.3869 2.9176 3.0437 1.0824-3.0437 1.0824z" fill="#f40000" stroke-linecap="square"/>
+ <path d="m54 34-3 4h2v6h2v-6h2l-3-4z" fill="#1eb100" stroke-linecap="square" stroke-width=".75593"/>
+ <path d="m15 39-4-3v2h-6v2h6v2z" fill="#1eb100" stroke-linecap="square" stroke-width=".75593"/>
+ <path d="m35.071 34c-0.59357 0-1.0714 0.47786-1.0714 1.0714v7.6786c0 0.6925 0.5575 1.25 1.25 1.25 0.04328 0 0.08588-2e-3 0.128-0.0063 0.63186-0.063768 1.122-0.59449 1.122-1.2437 0 0.6925 0.5575 1.25 1.25 1.25 0.6925 0 1.25-0.5575 1.25-1.25 0 0.6925 0.5575 1.25 1.25 1.25 0.6925 0 1.25-0.5575 1.25-1.25 0 0.6925 0.5575 1.25 1.25 1.25 0.6925 0 1.25-0.5575 1.25-1.25v-7.6786c0-0.59357-0.47786-1.0714-1.0714-1.0714h-7.8571z" fill="#f9e70c" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="2.0248" style="paint-order:markers fill stroke"/>
+ <path d="m41 40a2 2 0 0 1-1 1.7321 2 2 0 0 1-2 0 2 2 0 0 1-1-1.7321h2z" fill="#080808" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2" stroke-width="3.0861" style="paint-order:markers fill stroke"/>
+ <g transform="matrix(.21053 0 0 .2 32.263 31.8)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="3.2">
+  <circle cx="20" cy="24" r="7" fill="#16482a" stroke-width="9.9213" style="paint-order:markers fill stroke"/>
+  <circle cx="20" cy="23" r="7" fill="#fff" stroke-width="9.9213" style="paint-order:markers fill stroke"/>
+  <circle cx="44" cy="24" r="7" fill="#16482a" stroke-width="9.9213" style="paint-order:markers fill stroke"/>
+  <circle cx="44" cy="23" r="7" fill="#fff" stroke-width="9.9213" style="paint-order:markers fill stroke"/>
+  <circle cx="24" cy="23" r="3" fill="#050505" stroke-width="4.252" style="paint-order:markers fill stroke"/>
+  <circle cx="48" cy="23" r="3" fill="#080808" stroke-width="4.252" style="paint-order:markers fill stroke"/>
+ </g>
+</svg>
